@@ -105,9 +105,6 @@ body {
     .navigation-text {
         transform: rotate(10deg);
     }
-    .page-wrapper {
-        height: 100%;
-    }
 }
 @media all and (max-width: 920px) {
     .main-content {
