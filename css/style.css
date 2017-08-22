@@ -19,7 +19,7 @@ body {
     height: 0;
     overflow: hidden;
     z-index: -1;
-    content: url(../images/desktop.jpg) url(../images/mobile.jpg) url(../images/background.png) url(../images/popped-bubble.png) url(../images/bubble.png);
+    content: url(../images/desktop.jpg) url(../images/background.png) url(../images/popped-bubble.png) url(../images/bubble.png);
 }
 .loader-wrapper {
     height: 100%;
