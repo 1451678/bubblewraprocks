@@ -1,8 +1,19 @@
 $(document).ready(function(){
+	
 	$(window).load(function() {
          $('.loader-wrapper').hide();
          $('.page-wrapper').show();
     });
+	
+	var isMouseDown = false;
+	$(document).mousedown(function(e) {
+		e.preventDefault();
+		isMouseDown = true;
+	})
+	.mouseup(function() {
+		isMouseDown = false;
+	});
+	
 	var app = {
 		bubbleCount: 85,
 		bubbleCounter: 0,
@@ -12,7 +23,8 @@ $(document).ready(function(){
 			app.loadBubbles();
 			app.loadCounter();
 			app.loadAudio();
-			app.clickHandlers();
+			app.clickHandler();
+			app.mousemoveHandler();
 		},
 		loadBubbles: function() {
 			for(i = 0; i < app.bubbleCount; i ++) {
@@ -37,7 +49,7 @@ $(document).ready(function(){
 				app.audio[i] = audio;
 			}			
 		},
-		clickHandlers: function() {
+		clickHandler: function() {
 			$('.bubble').on('click', function() {
 				if (!($(this).hasClass('popped'))) {
 					app.pop($(this));
@@ -50,6 +62,13 @@ $(document).ready(function(){
 			$('.overlay').on('click', function(){
 				$('.overlay').removeClass('open');
 				$('.overlay').addClass('close');
+			});
+		},
+		mousemoveHandler: function() {
+			$('.bubble').mousemove(function(){
+				if (isMouseDown) {
+					$(this).click();
+				}
 			});
 		},
 		incCounters: function() {
